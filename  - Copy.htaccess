@@ -1,0 +1,9 @@
+Options -MultiViews
+<FilesMatch "\.(eot|ttf|otf|woff)">
+    Header set Access-Control-Allow-Origin "*"
+</FilesMatch>
+RewriteEngine On
+RewriteBase /amn/
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.+[a-z,A-Z,0-9,ễ,\ ].+)$ index.php?url=$1 [L]
