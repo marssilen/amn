@@ -24,8 +24,5 @@
   <?=$data['pview']?>
 </div>
 </div>
-<?php
-require_once ('app/views/footer.php');
-?>
 </body>
 </html>
