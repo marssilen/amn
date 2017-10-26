@@ -113,14 +113,31 @@ body, html {
             text-align: right;
             direction: rtl;
         }
-        #footer{
-            margin: 0px;
-            padding: 0px;
-            height: 150px;
-            border: none;
-        }
+      
+		html {
+		  height: 100%;
+		  box-sizing: border-box;
+		}
         body{
-            padding-bottom: 0px;
+			 position: relative;
+			  min-height: 90%;
+			padding-bottom:60px;
+        }
+		#wrapper {
+			min-height:100%;
+			position:relative;
+		}
+		#content {
+			padding-bottom:150px; /* Height of the footer element */
+		}
+		#footer{
+			position:absolute;
+			bottom:0;
+			width:100%;
+            margin: 0px;
+            padding: 1rem;
+            border: none;
+			height:100px;
         }
         a:link, a:visited{
             text-decoration:none;
