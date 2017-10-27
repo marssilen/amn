@@ -1,6 +1,7 @@
 <?php
 require_once('app/views/head.php'); ?>
 <body>
+
 <?php require_once('app/views/menu.php'); ?>
 <!-- Header with full-height image -->
 <header class="bgimg-1 w3-display-container w3-grayscale-min" id="home">
@@ -11,6 +12,8 @@ require_once('app/views/head.php'); ?>
     <p><a href="<?=URL?>page/2/درباره ی امن ایران" class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off">درباره ی ما</a></p>
   </div>
 </header>
+<div id="wrapper">
+<div id="content">
 <!-- Home Section -->
 <div class="w3-container" style="padding:128px 16px" id="Home">
   <h3 class="w3-center">زمینه های کاری</h3>
@@ -36,7 +39,6 @@ require_once('app/views/head.php'); ?>
 	</div>
 	<?php }?>
   </div>
-</div>
 </div>
 <!-- Promo Section - "We know design" -->
 <?php foreach($data['div'] as $div){?>
@@ -68,6 +70,7 @@ require_once('app/views/head.php'); ?>
         </div>
     </div>
 </div>
+</div>
 <?php
 require_once ('app/views/footer.php');
 ?>
@@ -91,5 +94,6 @@ require_once ('app/views/footer.php');
     }
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu-916DdpKAjTmJNIgngS6HL_kDIKU0aU&callback=myMap"></script>
+</div>
 </body>
 </html>
