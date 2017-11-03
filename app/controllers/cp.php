@@ -201,7 +201,7 @@ print_r($data);
 $this->view('cp/address_detail',$data);
 }
     function settings(){
-        $insert=array('submit','title','about','logo','description','keywords');
+        $insert=array('submit','title','about','logo','description','keywords','instagram','telegram','background','address','phone');
         if(form::check($_POST, $insert,TRUE)){
 //            print_r($_POST);
             $this->formModel->change_settings($_POST['title'],$_POST['about'],$_POST['logo'],$_POST['keywords'],$_POST['description']);

@@ -13,11 +13,11 @@ $settings=$this->settings;
         echo $desc;
     }elseif(isset($settings['description'])){
         echo $settings['description'];
-    }else{echo 'MIM PHOTOGRAPHY';
+    }else{echo 'AMNIRAN';
     }?>"/>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="<?= URL ?>public/bootstrap-3.3.6-dist/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="<?= display(URL) ?>public/css/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="<?= URL ?>public/css/mycss.css">
@@ -31,11 +31,14 @@ $settings=$this->settings;
 <script src="<?= URL ?>public/js/myscript.js"></script>
 <script src="<?= URL ?>public/js/header.js.php"></script>
 <title><?php if(isset($title) and isset($settings['title']))echo $title.'-'.$settings['title'];
-elseif(isset($settings['title']))echo $settings['title'];else{?>MIM PHOTOGRAPHY<?php } ?></title>
+elseif(isset($settings['title']))echo $settings['title'];else{?>AMNIRAN<?php } ?></title>
 <style>
 
 </style>
     <style>
+	.bgimg-1 {
+		background-image: url("<?=$settings['background']?>");
+	}
         .xxx{
             cursor: pointer;
         }

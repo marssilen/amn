@@ -64,9 +64,18 @@ require_once('app/views/head.php'); ?>
             <div id="googleMap" class="w3-greyscale-max" style="width:100%;height:510px;"></div>
         </div>
         <div class="w3-half">
-            <p><i class="fa fa-map-marker fa-fw w3-xxlarge w3-margin-right"></i> اصفهان-خیابان طالقانی،نرسیده به چهارراه خلجا(زاهد)،روبروی بن بست 15</p>
-            <p><i class="fa fa-phone fa-fw w3-xxlarge w3-margin-right"></i> تلفن:031-32402875-09135560028
-                <br><span style="margin-right: 73px">09131300027 مهندس مرادی</span></p>
+			 <table style="width:100%">
+  <tr>
+    <td style="width:8px"><i class="fa fa-map-marker fa-fw w3-xxlarge w3-margin-right"></i></td>
+    <td><?=nl2br($settings['address'])?></td>
+ 
+  </tr>
+  <tr>
+    <td><i class="fa fa-phone fa-fw w3-xxlarge w3-margin-right"></i></td>
+    <td><?=nl2br($settings['phone'])?></td>
+   
+  </tr>
+</table> 
         </div>
     </div>
 </div>

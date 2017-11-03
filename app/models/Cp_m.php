@@ -59,6 +59,8 @@ function get_settings(){
 }
 function change_settings($title,$about,$logo,$keywords,$description){
     $this->db->update("settings",array("title"=>$title,"logo"=>$logo,"about"=>$about,"keywords"=>$keywords,"description"=>$description),"id=1");
+	$this->db->update("settings",array("instagram"=>$_POST['instagram'],"telegram"=>$_POST['telegram'],"background"=>$_POST['background']),"id=1");
+	$this->db->update("settings",array("address"=>$_POST['address'],"phone"=>$_POST['phone']),"id=1");
 }
 function get_all($page,$rows_per_page){
 	$result=$this->db->pagination("SELECT id, name,card_image FROM items ORDER BY id DESC",array(),$page,$rows_per_page);
