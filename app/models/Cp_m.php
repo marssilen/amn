@@ -5,6 +5,12 @@ class Cp_m extends Model
 function __construct(){
 parent::__construct();
 }
+function get_all_cat(){
+$sql='SELECT * FROM category';
+$result=$this->db->query($sql);
+$result->setFetchMode(PDO::FETCH_ASSOC);
+return $result->fetchAll();
+}
 function get_file($name){
     return $this->db->select('select * from image WHERE image=:name',array('name'=>$name));
 }

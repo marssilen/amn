@@ -31,7 +31,7 @@ require_once('app/views/head.php'); ?>
 	  <p style="margin: 16px">
 	  <a id="readmore" class="w3-button w3-light-grey w3-block w3-center"
          style="position: absolute;bottom: 0px;left: 0px"
-         href="<?=URL?>page/<?=$card['url_cat'].'/'.urlencode($card['title'])?>">بیشتر بخوانید</a>
+         href="<?=URL?>cat/<?=$card['url_cat'].'/&cat='.urlencode($card['title'])?>">بیشتر بخوانید</a>
 	  </p>
 	     
 	  </div>
@@ -47,7 +47,7 @@ require_once('app/views/head.php'); ?>
         <div class="w3-col m6">
             <h3><?=$div['title']?></h3>
             <p><?=nl2br($div['description'])?></p>
-            <p><a href="<?=URL?>page/<?=$div['url_cat'].'/'.urlencode($div['title'])?>" class="w3-button w3-black">ادامه</a></p>
+            <p><a href="<?=URL?>cat/<?=$div['url_cat'].'/&cat='.urlencode($div['title'])?>" class="w3-button w3-black">ادامه</a></p>
         </div>
         <div class="w3-col m6">
             <img class="w3-image" src="<?= URL ?>public/upload/<?=$div['image']?>" alt="AMNCO" width="100%">

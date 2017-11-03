@@ -52,7 +52,8 @@ public function home_page()
             $this->formModel->home_pic($_POST['id'],$imagename);
         }
         $data = $this->formModel->home_get_all();
-        $items=$this->formModel->get_all_items();
+        //$items=$this->formModel->get_all_items();
+		$items=$this->formModel->get_all_cat();
         $this->view('cp/home_page', ['data' => $data,'items'=>$items], true);
 
     }
