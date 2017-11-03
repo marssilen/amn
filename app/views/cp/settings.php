@@ -16,10 +16,10 @@
         <label for="keywords">کلمات کلیدی</label>
         <input class="w3-input type="text" value="<?=$data['keywords']?>" placeholder="keywords" id="keywords" name="keywords"/>
         <br>
-		<label for="instagram">آیدی تلگرام</label>
+		<label for="instagram">آیدی اینستاگرام</label>
         <input class="w3-input type="text" value="<?=$data['instagram']?>" placeholder="instagram" id="instagram" name="instagram"/>
         <br>
-		<label for="telegram">آیدی اینتاگرام</label>
+		<label for="telegram">آیدی تلگرام</label>
         <input class="w3-input type="text" value="<?=$data['telegram']?>" placeholder="telegram" id="telegram" name="telegram"/>
         <br>
 		<label for="background">عکس اصلی پشت زمینه</label>
