@@ -16,12 +16,12 @@ require_once('app/views/head.php');
         <p>
             <?= $data['data']['long_description'] ?>
         </p>
-        <div>
+    </div>
+	  <div>
             <?php foreach ($data['tags'] as $tag){?>
                 <a href="<?=URL.'tag/&tag='.$tag['tag']?>"><span class="tag"><?= $tag['tag']?></span></a>
             <?php } ?>
         </div>
-    </div>
 </div>
 </div>
 <?php

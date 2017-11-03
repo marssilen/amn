@@ -1,8 +1,22 @@
+table caption{
+    text-align: right;
+}
 .tag{
     display:inline-block;padding-left:8px;padding-right:8px;text-align:center;
     color:#000 !important;background-color:#87CEEB !important;
     border-radius:4px !important;
 }
+table{
+    border-collapse: collapse;
+}
+table caption{
+    text-align: right;
+}
+th, td {
+    text-align: right;
+    padding: 8px;
+}
+tr:nth-child(odd){background-color: #f2f2f2}
 .mymodal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */

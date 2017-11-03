@@ -45,10 +45,9 @@ public function home_page()
             $this->formModel->insert_home();
         }
         $req= array('id','pic');
-        print_r($_POST);
+   
         if(form::check($_POST,$req,false)) {
-            echo 'yes ';
-            print_r($_POST);
+            
             $imagename=	$this->upload_a_file();
             $this->formModel->home_pic($_POST['id'],$imagename);
         }
