@@ -10,7 +10,7 @@ class Cat extends Controller
 //            echo '</pre>';
 //
 //            die();
-            $string='SELECT id,name,card_image,view,price FROM items WHERE cat='.$cat;
+            $string='SELECT id,name,card_image,view FROM items WHERE cat='.$cat;
             $count_str='SELECT count(id) as count FROM items WHERE cat='.$cat;
             $children=array_filter($m);
             foreach ($children as $child){
@@ -29,13 +29,6 @@ class Cat extends Controller
                         break;
                     case 3:
                         $string .= ' ORDER BY id';
-                        break;
-                    case 4:
-                        $string .= ' ORDER BY price';
-                        break;
-                    case 5:
-                        $string .= ' ORDER BY price DESC';
-//                        die();
                         break;
                 }
             }
