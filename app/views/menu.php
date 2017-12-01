@@ -6,20 +6,20 @@ $menu_list=$this->model('Menu_m')->get_menu();
     <a href="<?=URL?>" class="w3-bar-item w3-button w3-wide"><img src="<?=URL?>public/logo.jpg" height="30"></a>
     <!-- Right-sided navbar links -->
     <div class="w3-right w3-hide-small">
-	  <?php foreach($menu_list as $menu){ ?>
-        <?php if($menu['parent']=='0'){ ?>
-		<a href="<?=$menu['href']?>" class="w3-bar-item w3-button"><?= $menu['menu'] ?></a>
-        <?php } ?>
-    <?php } ?>
-        <?php if(!$this->is_login){ ?>
-			<a href="<?= URL ?>login" class="w3-bar-item w3-button">وارد شوید</a>
+	<?php if(!$this->is_login){ ?>
+			<a href="<?= URL ?>login" class="w3-right w3-bar-item w3-button">وارد شوید</a>
         <?php }else{
             $m=$this->model('Page_m');
             $fid=$m->get_factor(Session::get('id'));
             ?>
-			<a href="<?= URL ?>cp/items/" class="w3-bar-item w3-button"> مدیریت کاربری</a>
-			<a href="<?= URL ?>cp/logout/" class="w3-bar-item w3-button"> خروج</a>
+			<a href="<?= URL ?>cp/items/" class="w3-right w3-bar-item w3-button"> مدیریت کاربری</a>
+			<a href="<?= URL ?>cp/logout/" class="w3-right w3-bar-item w3-button"> خروج</a>
         <?php } ?>
+	  <?php foreach($menu_list as $menu){ ?>
+        <?php if($menu['parent']=='0'){ ?>
+		<a href="<?=$menu['href']?>" class="w3-right w3-bar-item w3-button"><?= $menu['menu'] ?></a>
+        <?php } ?>
+    <?php } ?>
     </div>
     <!-- Hide right-floated links on small screens and replace them with a menu icon -->
 
