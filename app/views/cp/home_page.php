@@ -23,7 +23,7 @@
                             <button class="btn" type="submit" name="change">تغییر</button>
                             <select name="cat">
                                 <?php foreach ($data['items'] as $item){ ?>
-                                <option <?php if($card['url_cat']==$item['id']) echo 'selected'; ?> value="<?=$item['id']?>"><?= $item['cat']?></option>
+                                <option <?php if($card['url_cat']==$item['id']) echo 'selected'; ?> value="<?=$item['id']?>"><?= $item['name']?></option>
                                 <?php } ?>
                             </select>
                             <button class="btn w3-red" type="submit" name="delete">حذف</button>

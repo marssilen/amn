@@ -53,7 +53,7 @@ public function home_page()
         }
         $data = $this->formModel->home_get_all();
         //$items=$this->formModel->get_all_items();
-		$items=$this->formModel->get_all_cat();
+		$items=$this->formModel->get_all_id();
         $this->view('cp/home_page', ['data' => $data,'items'=>$items], true);
 
     }
@@ -61,6 +61,7 @@ public function home_page()
     private function upload_a_file(){
         $destination = 'public/upload/';
         $upload = new Upload($destination);
+        $upload->setDisableExtension();
         try {
             $upload->setMaxSize($this->max_file_size);
             $upload->move();
@@ -75,7 +76,10 @@ public function home_page()
         $data=array();
         if(isset($_POST['add_card_image'])){
             $imagename=	$this->upload_a_file();
+            echo '<h2>URL is:</h2><br>';
+            echo '<h3>'.URL.'public/upload/'.$imagename.'</h3>';
             $this->formModel->add_image($imagename,$_POST['alt']);
+            die();
         }
     $row=20;
     $index=($page-1)*$row;

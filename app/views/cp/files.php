@@ -2,24 +2,23 @@
 <div class="w3-white container center" >
 <div class="w3-row">
 <div class="" align="center"><!--left images-->
-    <button onclick="document.getElementById('add_card_image_modal').style.display='block'" class="btn btn-info w3-margin-16">افزودن عکس</button>
+    <button onclick="document.getElementById('add_card_image_modal').style.display='block'" class="btn btn-info w3-margin-16">افزودن فایل</button>
 <div ng-app="myApp" ng-controller="myCtrl">
-<div class="row w3-margin-16">
-<div id='{{x}}' class="col-sm-3 col-xs-6 w3-padding-16" ng-repeat="x in names">
-
-    <a href="<?=URL?>item/{{x}}"><div class="w3-round  w3-card-2 w3-center mycard w3-white" style="padding:8px" >
-<div align="center" class="">{{x}}</div>
-<div class="w3-white" style="padding-bottom:0px;padding-left:10px;padding-right:10px">
-<img src="<?= URL ?>public/upload/{{x}}" style="width: 150px;height: 150px">
-<p align="right" class="font" style="padding:0px">
-
-</p>
-<a class="btn btn-info" href="<?= URL ?>cp/delete_file/{{x}}">حذف</a>
-<a class="btn btn-success" href="<?= URL ?>cp/edit_file/{{x}}">ویرایش</a>
-</div>
-</div>
-    </a>
-</div>
+<div class="row w3-margin-top">
+    <table class="w3-table w3-bordered" dir="ltr">
+        <tr>
+            <th>&ensp;</th>
+            <th>URL</th>
+            <th>delete</th>
+            <th>edit</th>
+        </tr>
+        <tr id='{{x}}'  ng-repeat="x in names">
+            <td><img src="<?= URL ?>public/upload/{{x}}" style="width: 50px;height: 50px"></td>
+            <td><input style="width: 100%" value="<?=URL?>public/upload/{{x}}"/></td>
+            <td><a class="btn btn-info" href="<?= URL ?>cp/delete_file/{{x}}">حذف</a></td>
+            <td><a class="btn btn-success" href="<?= URL ?>cp/edit_file/{{x}}">ویرایش</a></td>
+        </tr>
+    </table>
 </div>
 </div>
 <script>

@@ -106,7 +106,7 @@ header('location:'.URL);
 die();
 }
 function get_all_id(){
-$result=$this->db->select("SELECT id FROM items ");
+$result=$this->db->select("SELECT id,name FROM items ");
 return $result;
 }
 function get_last_id(){

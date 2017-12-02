@@ -16,7 +16,7 @@ require_once('app/views/head.php'); ?>
 <div id="content">
 <!-- Home Section -->
 <div class="w3-container" style="padding:128px 16px" id="Home">
-  <h3 class="w3-center">زمینه های کاری</h3>
+<!--  <h3 class="w3-center">زمینه های کاری</h3>-->
   <div class="w3-row-padding" style="margin-top:64px">
 	<?php foreach($data['cards'] as $card){?>
     <div class="w3-col l3 m6 w3-margin-bottom" style="">
@@ -25,13 +25,13 @@ require_once('app/views/head.php'); ?>
 	  <img class="" src="<?= URL ?>public/upload/<?=$card['image']?>" alt="amnco" style="width: 100%">
 	  </div>
 	  <div class="w3-container size" style="position: relative">
-      <h3><?=$card['title']?></h3>
+      <h3 class="w3-center"><?=$card['title']?></h3>
           <hr class="w3-opacity"/>
-      <p><?=$card['description']?></p>
+<!--      <p>--><?//=$card['description']?><!--</p>-->
 	  <p style="margin: 16px">
 	  <a id="readmore" class="w3-button w3-light-grey w3-block w3-center"
          style="position: absolute;bottom: 0px;left: 0px"
-         href="<?=URL?>cat/<?=$card['url_cat'].'/&cat='.urlencode($card['title'])?>">بیشتر بخوانید</a>
+         href="<?=URL?>page/<?=$card['url_cat'].'/&title='.urlencode($card['title'])?>">بیشتر بخوانید</a>
 	  </p>
 	     
 	  </div>
@@ -47,7 +47,7 @@ require_once('app/views/head.php'); ?>
         <div class="w3-col m6">
             <h3><?=$div['title']?></h3>
             <p><?=nl2br($div['description'])?></p>
-            <p><a href="<?=URL?>cat/<?=$div['url_cat'].'/&cat='.urlencode($div['title'])?>" class="w3-button w3-black">ادامه</a></p>
+            <p><a href="<?=URL?>page/<?=$div['url_cat'].'/&title='.urlencode($div['title'])?>" class="w3-button w3-black">ادامه</a></p>
         </div>
         <div class="w3-col m6">
             <img class="w3-image" src="<?= URL ?>public/upload/<?=$div['image']?>" alt="AMNCO" width="100%">
@@ -102,7 +102,7 @@ require_once ('app/views/footer.php');
         marker.setMap(map);
     }
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu-916DdpKAjTmJNIgngS6HL_kDIKU0aU&callback=myMap"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAaISUDVkoEhXWbI3G_kDWG9-jjsiaX6Aw&callback=myMap"></script>
 </div>
 </body>
 </html>
