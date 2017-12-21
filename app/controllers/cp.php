@@ -213,28 +213,26 @@ $this->view('cp/address_detail',$data);
         $data=$this->formModel->get_settings();
         $this->view('cp/settings',$data,true);
     }
-function menu(){
-$req=array('id','menu','parent','href','submit');
-if(form::check($_POST, $req,TRUE)){
-if(form::check_type('isiss',$_POST)){
-$this->formModel->change_menu($_POST);
-}
-}
-$insert=array('id','submit');
-if(form::check($_POST, $insert,TRUE)){
-if(form::check_type('is',$_POST)){
-$this->formModel->remove_menu($_POST['id']);
-}
-}
-$insert=array('submit');
-if(form::check($_POST, $insert,TRUE)){
-if(form::check_type('s',$_POST)){
-$this->formModel->add_menu();
-}
-}
-$data=$this->formModel->get_menu();
-$this->view('cp/menu',$data,true);
-}
+    function menu(){
+        $req=array('id','menu','href','edit');
+        if(form::check($_POST, $req,TRUE)){
+            if(form::check_type('isss',$_POST)){
+                $this->formModel->change_menu($_POST);
+            }
+        }
+        $insert=array('id','delete');
+        if(form::check($_POST, $insert,TRUE)){
+            if(form::check_type('is',$_POST)){
+                $this->formModel->remove_menu($_POST['id']);
+            }
+        }
+        $insert=array('menu','parent','href','submit');
+        if(form::check($_POST, $insert,TRUE)){
+            $this->formModel->add_menu($_POST['menu'],$_POST['href'],$_POST['parent']);
+        }
+        $data=$this->formModel->get_menu();
+        $this->view('cp/menu',$data,true);
+    }
 function get_users($page=1){
 $page=(int)$page;
 $pagelimit=20;

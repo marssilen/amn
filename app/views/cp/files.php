@@ -13,7 +13,7 @@
             <th>edit</th>
         </tr>
         <tr id='{{x}}'  ng-repeat="x in names">
-            <td><img src="<?= URL ?>public/upload/{{x}}" style="width: 50px;height: 50px"></td>
+            <td><img src="<?= URL ?>public/file.png" style="width: 50px;height: 50px"></td>
             <td><input style="width: 100%" value="<?=URL?>public/upload/{{x}}"/></td>
             <td><a class="btn btn-info" href="<?= URL ?>cp/delete_file/{{x}}">حذف</a></td>
             <td><a class="btn btn-success" href="<?= URL ?>cp/edit_file/{{x}}">ویرایش</a></td>

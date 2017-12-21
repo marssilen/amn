@@ -7,7 +7,7 @@ $settings=$this->settings;
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta property="og:image" content="<?php if(isset($settings['logo']))echo $settings['logo'];else{?>#<?php } ?>"/>
-    <meta name="keywords" content="<?php if(isset($settings['keywords']))echo $settings['keywords'];else{?>MIM PHOTOGRAPHY<?php } ?>"/>
+    <meta name="keywords" content="<?php if(isset($settings['keywords']))echo $settings['keywords'];else{?>امنیران<?php } ?>"/>
     <meta name="description" content="<?php
     if(isset($desc)){
         echo $desc;
@@ -30,22 +30,58 @@ $settings=$this->settings;
 <script src="<?= URL ?>public/bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
 <script src="<?= URL ?>public/js/myscript.js"></script>
 <script src="<?= URL ?>public/js/header.js.php"></script>
-<title><?php if(isset($title) and isset($settings['title']))echo $title.'-'.$settings['title'];
+<title><?php if(isset($title) and isset($settings['title'])){
+    $pos=strpos($settings['title'],'-');
+    if($pos>=0)
+        echo $title.'-'.substr($settings['title'],0,$pos);
+    else
+        echo $title.'-'.$settings['title'];
+
+}
 elseif(isset($settings['title']))echo $settings['title'];else{?>AMNIRAN<?php } ?></title>
 <style>
 
 </style>
     <style>
+        .in {
+            /*display: block;*/
+            position: relative;
+            animation-name: sliderightin;
+            animation-duration: 2s;
+            z-index: 5;
+        }
+        .hold{
+            z-index: 2;
+        }
+        .out {
+            position: relative;
+            animation-name: slideleftin;
+            animation-duration: 2s;
+            z-index: 5;
+        }
+        /* Standard syntax */
+        @keyframes sliderightout {
+            from   {left:0%; top:0px;}
+            to { left:100%; top:0px;}
+        }
+        @keyframes sliderightin {
+            from   {left:-100%; top:0px;}
+            to {left:0%; top:0px;}
+        }
+        @keyframes slideleftout {
+            from   {left:0%; top:0px;}
+            to { left:-100%; top:0px;}
+        }
+        @keyframes slideleftin {
+            from   {left:100%; top:0px;}
+            to {left:0%; top:0px;}
+        }
 	.bgimg-1 {
 		background-image: url("<?=$settings['background']?>");
 	}
         .xxx{
             cursor: pointer;
         }
-        .slides{
-            display: none;
-        }
-        
         body,h3{
             font-family: 'Yekan' ;
             /*font-size: 15px;*/

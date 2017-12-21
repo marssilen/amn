@@ -156,23 +156,23 @@ function show_f($factor_id){
 	$result->setFetchMode(PDO::FETCH_ASSOC);
 	return $result->fetchAll();
 }
-function get_menu(){
-$result=$this->db->select("SELECT * FROM menu ");//,array('pa'=>0)
-return $result;
-}
-function add_menu(){
-$this->db->insert('menu',array('parent'=>'0'));
-}
-function change_menu($post){
-$this->db->update("menu",array('menu'=>$post['menu'],'href'=>$post['href'],'parent'=>$post['parent']),'id='.$post['id']);
-}
-function remove_menu($id){
-return $this->db->delete('menu',"id=$id");
-}
-function change_item_numbers($id,$num,$factor_id){
-$result=$this->db->update("purchased",array('num'=>$num),'id='.$id.' AND factor_id='.$factor_id);
-return $result;
-}
+    function get_menu(){
+        $result=$this->db->select("SELECT * FROM menu ");//,array('pa'=>0)
+        return $result;
+    }
+    function add_menu($menu,$href,$parent){
+        $this->db->insert('menu',array('menu'=>$menu,'href'=>$href,'parent'=>$parent));
+    }
+    function change_menu($post){
+        $this->db->update("menu",array('menu'=>$post['menu'],'href'=>$post['href']),'id='.$post['id']);
+    }
+    function remove_menu($id){
+        return $this->db->delete('menu',"id=$id");
+    }
+    function change_item_numbers($id,$num,$factor_id){
+        $result=$this->db->update("purchased",array('num'=>$num),'id='.$id.' AND factor_id='.$factor_id);
+        return $result;
+    }
 
 
 function set_final_factor($factor_id,$address){

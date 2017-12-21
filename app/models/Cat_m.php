@@ -9,11 +9,11 @@ class Cat_m extends Model
             array('cat' => $cat));
         return $result[0]['count'];
     }
-	function getCatItems($sql,$page,$rows=10){
+	function getCatItems($sql,$page,$rows=24){
 //        return $this->db->select($sql);
         return $this->db->pagination($sql, array(),$page,$rows);
     }
-    function get_pview($cat,$sql,$numrows,$rows_per_page=10){
+    function get_pview($cat,$sql,$numrows,$rows_per_page=24){
         $pages= ceil($numrows/$rows_per_page);
         return create_pview(URL.'cat/'.$cat,$pages,$this->get_cat_name($cat));
     }
