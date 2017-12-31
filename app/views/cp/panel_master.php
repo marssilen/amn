@@ -72,6 +72,7 @@ $('.mother').click(function(e) {
                   <li><a href="<?= display(URL) ?>cp/show_cat"><span class="glyphicon glyphicon-list"></span> دسته بندی ها</a></li>
                   <li><a href="<?= display(URL) ?>cp/files/"><span class="glyphicon glyphicon-picture"></span> فایل ها</a></li>
                   <li><a href="<?= display(URL) ?>cp/menu"><span class="glyphicon glyphicon-menu-hamburger"></span> منو ها </a></li>
+                    <li><a href="<?= display(URL) ?>cp/forms"><span class="glyphicon glyphicon-menu-hamburger"></span> فرم های درخواست </a></li>
                   <li><a href="<?= display(URL) ?>cp/settings"><span class="glyphicon glyphicon-cog"></span> تنظیمات </a></li>
                 </ul>
             </li>

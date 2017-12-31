@@ -309,4 +309,15 @@ $result=$this->db->select("SELECT * FROM comments WHERE verified=:verified"
 ,array('verified' =>$verified));
 return $result;
 }
+    function remove_form($id){
+        return $this->db->delete('forms',"id=$id");
+    }
+    function get_forms(){
+        $result=$this->db->select("SELECT id,date FROM forms ORDER BY id DESC ");
+        return $result;
+    }
+    function get_form($id){
+        $result=$this->db->select("SELECT * FROM forms WHERE id=:formId",array('formId'=>$id));
+        return $result[0];
+    }
 }

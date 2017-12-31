@@ -1,5 +1,6 @@
 <?php
 $title=$data['data']['name'];
+$style='';
 require_once('app/views/head.php');
 ?>
 <body>

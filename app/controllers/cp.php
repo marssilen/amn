@@ -285,6 +285,19 @@ function address_remove($id){
 	$this->formModel->remove_address($id);
 	 header('location: '.URL.'cp/address');
 }
-
+    function forms(){
+        $insert=array('id','delete');
+        if(form::check($_POST, $insert,TRUE)){
+            if(form::check_type('is',$_POST)){
+                $this->formModel->remove_form($_POST['id']);
+            }
+        }
+        $data=$this->formModel->get_forms();
+        $this->view('cp/forms',$data,true);
+    }
+    function view_form($id){
+        $data=$this->formModel->get_form($id);
+        $this->view('cp/view_form',$data,true);
+    }
 
 }

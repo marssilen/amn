@@ -1,7 +1,7 @@
 <?php
 $menu_list=$this->model('Menu_m')->get_menu();
 ?>
-<div class="w3-topp w3-bar w3-white w3-card-2">
+<div class="w3-bar w3-white w3-card-2">
 <div class="container" id="myNavbar">
     <a href="<?=URL?>" class="w3-bar-item w3-button w3-wide"><img src="<?=URL?>public/logo.jpg" height="30"></a>
     <!-- Right-sided navbar links -->
@@ -28,9 +28,9 @@ $menu_list=$this->model('Menu_m')->get_menu();
     </a>
   </div>
 </div>
-<div class="container w3-light-gray w3-hide1" style="position: relative">
+<div class="container" style="position: relative">
 
-    <?php foreach($menu_list as $menu){ ?><?php if($menu['parent']=='0'){ ?><div id="menu_<?=$menu['id']?>" onmouseover="document.getElementById('menu_<?=$menu['id']?>').style.display='block'" onmouseleave="document.getElementById('menu_<?=$menu['id']?>').style.display='none'" class="w3-light-gray" style="display:none; z-index: 15;position: absolute;width: 100%"><?php foreach($menu_list as $list){?><?php if($list['parent']==$menu['id']){ ?><ul class="w3-col m3 w3-right" style="display: inline-block"><h6 class="w3-text-red"><a href="<?=$list['href']?>"><?=$list['menu']?></a></h6><?php foreach($menu_list as $item){?><?php if($item['parent']==$list['id']){ ?><li><a href="<?=$item['href']?>"><?= $item['menu'] ?></a></li><?php }} ?></ul><?php }} ?></div><div style="clear: both"></div> <?php } ?><?php } ?>
+    <?php foreach($menu_list as $menu){ ?><?php if($menu['parent']=='0'){ ?><div id="menu_<?=$menu['id']?>" onmouseover="document.getElementById('menu_<?=$menu['id']?>').style.display='block'" onmouseleave="document.getElementById('menu_<?=$menu['id']?>').style.display='none'" class="w3-light-gray w3-card-2" style="display:none; z-index: 15;position: absolute;width: 100%;border-bottom-left-radius:4px;border-bottom-right-radius:4px"><?php foreach($menu_list as $list){?><?php if($list['parent']==$menu['id']){ ?><ul class="w3-col m3 w3-right" style="display: inline-block"><h6 class="w3-text-red"><a href="<?=$list['href']?>"><?=$list['menu']?></a></h6><?php foreach($menu_list as $item){?><?php if($item['parent']==$list['id']){ ?><li><a href="<?=$item['href']?>"><?= $item['menu'] ?></a></li><?php }} ?></ul><?php }} ?></div><div style="clear: both"></div> <?php } ?><?php } ?>
 
 </div>
 <nav class="w3-sidebar w3-bar-block w3-black w3-card-2 w3-animate-right w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">

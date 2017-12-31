@@ -139,5 +139,14 @@ elseif(isset($settings['title']))echo $settings['title'];else{?>AMNIRAN<?php } ?
             background: #125688;
             color: white;
         }
+        @media (max-width:600px) {
+            #match2 img {
+                width: 100% !important;
+                height: auto !important;
+            }
+        }
+        <?php if(isset($style)){
+            echo $style;
+        }?>
     </style>
 </head>
