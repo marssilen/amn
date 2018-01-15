@@ -1,8 +1,9 @@
 
 <script>
-    function setEdit(id,menu,href){
+    function setEdit(id,menu,href,back){
         document.getElementById('editMenu_id').value=id;
         document.getElementById('editMenu').value=menu;
+        document.getElementById('editBack').value=back;
         document.getElementById('editHref').value=href;
         document.getElementById('edit_modal').style.display='block';
     }
@@ -23,7 +24,7 @@ $(function(){
 count++;
                 x += '<li><a href="'+ar[i].href+'"> ' + ar[i].menu +'</a><a class="plus" onclick="showmsg('+ar[i].id
                     +')" pa="'+ar[i].parent+'">+</a>'+'<a class="plus" onclick="setDelete('+ar[i].id
-                    +')">حذف </a>'+'<a class="plus" onclick="setEdit('+ar[i].id+",'"+ar[i].menu+"','"+ar[i].href
+                    +')">حذف </a>'+'<a class="plus" onclick="setEdit('+ar[i].id+",'"+ar[i].menu+"','"+ar[i].href+"','"+ar[i].back
                     +'\')">تغییر</a>'+ ctable(ar, ar[i].id) + '</li>';
             }
         }
@@ -100,6 +101,7 @@ $('.add_list_a').click(function(e) {
             <form method="post" action="">
                 <input type="hidden" name="id" id="editMenu_id" placeholder="id">
                 <input class="form-control" id="editMenu" name="menu" placeholder="نام">
+                <input class="form-control w3-margin-top" id="editBack" name="back" placeholder="عکس">
                 <input class="form-control w3-margin-top w3-margin-bottom" id="editHref" name="href" placeholder="href">
                 <button type="submit" name="edit" class="btn btn-default">تغییر</button>
                 <button type="button" onmousedown="return false;" onclick="document.getElementById('edit_modal').style.display='none';" class="btn btn-default">لغو</button>

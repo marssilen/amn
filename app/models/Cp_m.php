@@ -5,6 +5,18 @@ class Cp_m extends Model
 function __construct(){
 parent::__construct();
 }
+function getSlides(){
+    return $this->db->select('select * from slider');
+}
+function change_slide(){
+    $this->db->update('slider',array('url'=>$_POST['url'],'image'=>$_POST['image']),'id='.$_POST['id']);
+}
+function delete_slide(){
+    $this->db->delete('slider','id='.$_POST['id']);
+}
+    function add_slide(){
+        $this->db->insert('slider',array('image'=>''));
+    }
 function get_all_cat(){
 $sql='SELECT * FROM category';
 $result=$this->db->query($sql);
@@ -58,9 +70,9 @@ function get_settings(){
     return $data[0];
 }
 function change_settings($title,$about,$logo,$keywords,$description){
-    $this->db->update("settings",array("title"=>$title,"logo"=>$logo,"about"=>$about,"keywords"=>$keywords,"description"=>$description),"id=1");
-	$this->db->update("settings",array("instagram"=>$_POST['instagram'],"telegram"=>$_POST['telegram'],"background"=>$_POST['background']),"id=1");
-	$this->db->update("settings",array("address"=>$_POST['address'],"phone"=>$_POST['phone']),"id=1");
+    $this->db->update("settings",array("title"=>$title,"logo"=>$logo,"about"=>$about,"keywords"=>$keywords,"description"=>$description),"id=1",false);
+	$this->db->update("settings",array("instagram"=>$_POST['instagram'],"telegram"=>$_POST['telegram'],"background"=>$_POST['background']),"id=1",false);
+	$this->db->update("settings",array("address"=>$_POST['address'],"phone"=>$_POST['phone']),"id=1",false);
 }
 function get_all($page,$rows_per_page){
 	$result=$this->db->pagination("SELECT id, name,card_image FROM items ORDER BY id DESC",array(),$page,$rows_per_page);
@@ -164,7 +176,7 @@ function show_f($factor_id){
         $this->db->insert('menu',array('menu'=>$menu,'href'=>$href,'parent'=>$parent));
     }
     function change_menu($post){
-        $this->db->update("menu",array('menu'=>$post['menu'],'href'=>$post['href']),'id='.$post['id']);
+        $this->db->update("menu",array('menu'=>$post['menu'],'href'=>$post['href'],'back'=>$post['back']),'id='.$post['id']);
     }
     function remove_menu($id){
         return $this->db->delete('menu',"id=$id");
@@ -309,8 +321,39 @@ $result=$this->db->select("SELECT * FROM comments WHERE verified=:verified"
 ,array('verified' =>$verified));
 return $result;
 }
+    function remove_question($id){
+        return $this->db->delete('asks',"id=$id");
+    }
+    function verify_question($id){
+        return $this->db->update('asks',array('public'=>1),"id=$id");
+    }
+    function get_questions(){
+        $result=$this->db->select("SELECT * FROM asks ORDER BY id DESC ");
+        return $result;
+    }
+    function get_question($id){
+        $result=$this->db->select("SELECT * FROM asks WHERE id=:id ",array('id'=>$id));
+        if(isset($result[0]))
+        return $result[0];
+    }
+    function update_question(){
+        $this->db->update('asks',array('ask'=>$_POST['ask'].'<hr>'.$_POST['answer']),'id='.$_POST['id'],false);
+    }
+    function remove_qsubject($id){
+        return $this->db->delete('asktable',"id=$id");
+    }
+    function get_qsubjects(){
+        $result=$this->db->select("SELECT * FROM asktable ORDER BY id DESC ");
+        return $result;
+    }
+    function insert_qsubject(){
+        return $this->db->insert('asktable',array('subject'=>$_POST['subject']));
+    }
     function remove_form($id){
         return $this->db->delete('forms',"id=$id");
+    }
+    function verify_form($id){
+        return $this->db->update('forms',array('verified'=>1),"id=$id");
     }
     function get_forms(){
         $result=$this->db->select("SELECT id,date FROM forms ORDER BY id DESC ");
@@ -319,5 +362,37 @@ return $result;
     function get_form($id){
         $result=$this->db->select("SELECT * FROM forms WHERE id=:formId",array('formId'=>$id));
         return $result[0];
+    }
+    function remove_hire($id){
+        return $this->db->delete('hire',"id=$id");
+    }
+    function verify_hire($id){
+        return $this->db->update('hire',array('verified'=>1),"id=$id");
+    }
+    function get_hires(){
+        $result=$this->db->select("SELECT id,date FROM hire ORDER BY id DESC ");
+        return $result;
+    }
+    function get_hire($id){
+        $result=$this->db->select("SELECT * FROM hire WHERE id=:formId",array('formId'=>$id));
+        return $result[0];
+    }
+    function get_qb(){
+        $result=$this->db->select("SELECT count(*) as c FROM asks WHERE public=0");
+        if(isset($result[0]))
+            return $result[0]['c'];
+        return 0;
+    }
+    function get_reqb(){
+        $result=$this->db->select("SELECT count(*) as c FROM forms WHERE verified=0");
+        if(isset($result[0]))
+            return $result[0]['c'];
+        return 0;
+    }
+    function get_hireb(){
+        $result=$this->db->select("SELECT count(*) as c FROM hire WHERE verified=0");
+        if(isset($result[0]))
+            return $result[0]['c'];
+        return 0;
     }
 }

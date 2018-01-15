@@ -3,6 +3,9 @@ class Cp extends ControllerPanel
 {
     protected $max_file_size=9999999;
 	function view($page,$data=array(),$secure=false){
+	    $this->p_question=$this->formModel->get_qb();
+        $this->p_req=$this->formModel->get_reqb();
+        $this->p_hire=$this->formModel->get_hireb();
         $this->page=$page;
         parent::view('cp/panel_master',$data,$secure);
 	}
@@ -51,10 +54,24 @@ public function home_page()
             $imagename=	$this->upload_a_file();
             $this->formModel->home_pic($_POST['id'],$imagename);
         }
+        $req= array('id','url','image','cSlide');
+        if(form::check($_POST,$req)) {
+            $this->formModel->change_slide();
+        }
+        $req= array('id','url','image','dSlide');
+        if(form::check($_POST,$req)) {
+            $this->formModel->delete_slide();
+        }
+        $req= array('aSlide');
+        if(form::check($_POST,$req)) {
+            $this->formModel->add_slide();
+        }
+
         $data = $this->formModel->home_get_all();
         //$items=$this->formModel->get_all_items();
 		$items=$this->formModel->get_all_id();
-        $this->view('cp/home_page', ['data' => $data,'items'=>$items], true);
+		$slides=$this->formModel->getSlides();
+        $this->view('cp/home_page', ['data' => $data,'items'=>$items,'slides'=>$slides], true);
 
     }
 }
@@ -109,7 +126,7 @@ $this->items();
 public function items($pageno=1)
 {
 	if(isAdmin()){
-		$rows_per_page=8;
+		$rows_per_page=24;
 		$data=$this->formModel->get_all($pageno,$rows_per_page);
 		$pview=$this->formModel->get_pview('items','cp/items',$rows_per_page);
 		$this->view('cp/index',['data'=>$data,'pview'=>$pview],true);
@@ -214,9 +231,9 @@ $this->view('cp/address_detail',$data);
         $this->view('cp/settings',$data,true);
     }
     function menu(){
-        $req=array('id','menu','href','edit');
+        $req=array('id','menu','href','edit','back');
         if(form::check($_POST, $req,TRUE)){
-            if(form::check_type('isss',$_POST)){
+            if(form::check_type('issss',$_POST)){
                 $this->formModel->change_menu($_POST);
             }
         }
@@ -292,12 +309,76 @@ function address_remove($id){
                 $this->formModel->remove_form($_POST['id']);
             }
         }
+        $insert=array('id','ver');
+        if(form::check($_POST, $insert,TRUE)){
+            if(form::check_type('is',$_POST)){
+                $this->formModel->verify_form($_POST['id']);
+            }
+        }
         $data=$this->formModel->get_forms();
         $this->view('cp/forms',$data,true);
     }
     function view_form($id){
         $data=$this->formModel->get_form($id);
         $this->view('cp/view_form',$data,true);
+    }
+    function hire(){
+        $insert=array('id','delete');
+        if(form::check($_POST, $insert,TRUE)){
+            if(form::check_type('is',$_POST)){
+                $this->formModel->remove_hire($_POST['id']);
+            }
+        }
+        $insert=array('id','ver');
+        if(form::check($_POST, $insert,TRUE)){
+            if(form::check_type('is',$_POST)){
+                $this->formModel->verify_hire($_POST['id']);
+            }
+        }
+        $data=$this->formModel->get_hires();
+        $this->view('cp/hires',$data,true);
+    }
+    function view_hire($id){
+        $data=$this->formModel->get_hire($id);
+        $this->view('cp/view_hire',$data,true);
+    }
+    function ask(){
+        $insert=array('id','delete');
+        if(form::check($_POST, $insert,TRUE)){
+            if(form::check_type('is',$_POST)){
+                $this->formModel->remove_question($_POST['id']);
+            }
+        }
+        $insert=array('id','ver');
+        if(form::check($_POST, $insert,TRUE)){
+            if(form::check_type('is',$_POST)){
+                $this->formModel->verify_question($_POST['id']);
+            }
+        }
+        $data=$this->formModel->get_questions();
+        $this->view('cp/ask',$data,true);
+    }
+    function asktable(){
+        $insert=array('id','delete');
+        if(form::check($_POST, $insert,TRUE)){
+            if(form::check_type('is',$_POST)){
+                $this->formModel->remove_qsubject($_POST['id']);
+            }
+        }
+        $insert=array('subject','submit');
+        if(form::check($_POST, $insert,TRUE)){
+                $this->formModel->insert_qsubject();
+        }
+        $data=$this->formModel->get_qsubjects();
+        $this->view('cp/qsubject',$data,true);
+    }
+    function view_question($id){
+        $insert=array('id','answer','submit','ask');
+        if(form::check($_POST, $insert,TRUE)){
+            $this->formModel->update_question();
+        }
+        $data=$this->formModel->get_question($id);
+        $this->view('cp/view_ask',$data,true);
     }
 
 }

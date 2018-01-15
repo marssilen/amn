@@ -6,10 +6,10 @@ class Ask_m extends Model
 		parent::__construct();
 	}
     function getAllQuestions(){
-        return $this->db->select("SELECT * FROM asktable ORDER BY id DESC ");
+        return $this->db->select("SELECT * FROM asktable ORDER BY id DESC");
     }
 	function get($id){
-		return $this->db->select("SELECT * FROM asks WHERE table_id= :id ",array('id' => $id));
+		return $this->db->select("SELECT * FROM asks WHERE table_id= :id AND public != 0",array('id' => $id));
 	}
 	function insert($id){
 	    return $this->db->insert('asks',array('name'=>$_POST['name'],'email'=>$_POST['email'],

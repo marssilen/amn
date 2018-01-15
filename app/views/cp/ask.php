@@ -4,7 +4,7 @@
         <th>شناسه فرم</th>
         <th>تاریخ</th>
         <th>&ensp;</th>
-        <th>&ensp;</th><th>&ensp;</th>
+        <th>&ensp;</th><th>&ensp;</th><th>وضعیت انتشار</th>
       </tr>
     </thead>
     <tbody>
@@ -12,9 +12,10 @@
       <tr>
         <td><?= $form['id'] ?></td>
         <td><?= convert_to_shamsi($form['date']).' '.$form['date'] ?></td>
-        <td><a href="<?= URL.'cp/view_form/'.$form['id'] ?>">مشاهده<a></td>
+        <td><a href="<?= URL.'cp/view_question/'.$form['id'] ?>">مشاهده<a></td>
           <td><a href="<?=LINK?>" onclick="document.getElementById('form_id').value='<?=$form['id']?>';document.getElementById('delete_modal').style.display='block'">حذف<a></td>
           <td><a href="<?=LINK?>" onclick="document.getElementById('vform_id').value='<?=$form['id']?>';document.getElementById('v_modal').style.display='block'">تایید<a></td>
+          <td><span class="w3-badge w3-yellow"><?=($form['public']==0)?'جدید':'منتشر شده'?></span></td>
       </tr>
       <?php } ?>
     </tbody>

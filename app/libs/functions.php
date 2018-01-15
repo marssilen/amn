@@ -1,4 +1,23 @@
 <?php
+function menu($menus,$parent){
+    if($parent!=0) {
+        $str = '<ul style="padding: 10px">';
+    }
+    else{
+        $str = '<ul style="padding: 0px">';
+    }
+    $count=0;
+    foreach ($menus as $menu){
+        if($menu['parent']==$parent){
+            $count++;
+            $str.='<li><a class="w3-button w3-right-align" style="display: block;">'.$menu['menu'].'</a>'.menu($menus,$menu['id']).'</li>';
+        }
+    }
+    $str.='</ul>';
+    if($count!=0)
+    return $str;
+    else return '';
+}
 function display($msg){
   echo htmlentities($msg);
 }

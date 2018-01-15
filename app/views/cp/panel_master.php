@@ -72,7 +72,10 @@ $('.mother').click(function(e) {
                   <li><a href="<?= display(URL) ?>cp/show_cat"><span class="glyphicon glyphicon-list"></span> دسته بندی ها</a></li>
                   <li><a href="<?= display(URL) ?>cp/files/"><span class="glyphicon glyphicon-picture"></span> فایل ها</a></li>
                   <li><a href="<?= display(URL) ?>cp/menu"><span class="glyphicon glyphicon-menu-hamburger"></span> منو ها </a></li>
-                    <li><a href="<?= display(URL) ?>cp/forms"><span class="glyphicon glyphicon-menu-hamburger"></span> فرم های درخواست </a></li>
+                    <li><a href="<?= display(URL) ?>cp/asktable"><span class="glyphicon glyphicon-menu-hamburger"></span>موضوع سوالات </a></li>
+                    <li><a href="<?= display(URL) ?>cp/ask"><span class="glyphicon glyphicon-menu-hamburger"></span> سوالات </a><span class="w3-badge w3-blue w3-small"><?=$this->p_question?></span></li>
+                    <li><a href="<?= display(URL) ?>cp/forms"><span class="glyphicon glyphicon-menu-hamburger"></span> فرم های درخواست </a><span class="w3-badge w3-blue w3-small"><?=$this->p_req?></span></li>
+                    <li><a href="<?= display(URL) ?>cp/hire"><span class="glyphicon glyphicon-menu-hamburger"></span> فرم های استخدام </a><span class="w3-badge w3-blue w3-small"><?=$this->p_hire?></span></li>
                   <li><a href="<?= display(URL) ?>cp/settings"><span class="glyphicon glyphicon-cog"></span> تنظیمات </a></li>
                 </ul>
             </li>
@@ -86,10 +89,6 @@ $('.mother').click(function(e) {
 
         </ul>
     </div>
-
-
-
-
   </div>
   <div class="col-xs-12 col-sm-10">
       <?php

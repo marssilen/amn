@@ -6,13 +6,11 @@ require_once('app/views/head.php'); ?>
     <div id="content">
         <div style="max-width:1000px;margin: auto;" class="w3-margin-top w3-card-2 w3-container w3-round w3-padding-48">
             <p class="w3-center">
-              <?= print_r($data['data'])?>
+              <?= $data['data']?><br>
+                <a href="<?=$data['URL']?>">برگشت</a>
             </p>
         </div>
     </div>
-    <?php
-    require_once ('app/views/footer.php');
-    ?>
 </div>
 </body>
 </html>

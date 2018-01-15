@@ -1,7 +1,29 @@
 <div class="w3-container w3- w3-card-2" style="min-height: 400px;margin: 15px;padding: 50px;">
-<form method="POST" action="">
-    <input style="margin: 5px;padding: 1px 15px 1px 15px" class="add_list_a w3-blue w3-btn w3-round" type="submit" name="insert" value="افزودن"/>
-</form>
+
+    <div>
+        <p>اسلاید شو</p>
+        <form method="post" action="" class="form-inline">
+            <input class="form-control" type="submit" name="aSlide" value="اضافه کردن اسلاید">
+        </form>
+            <?php $slides=$data['slides'];
+            foreach ($slides as $slide){?>
+        <form class="form-inline" action="" method="post">
+                <div class="form-group">
+                    <input name="id" type="hidden" class="form-control" value="<?=$slide['id']?>">
+                <input placeholder="آدرس عکس" name="image" type="text" class="form-control" value="<?=$slide['image']?>">
+                <input placeholder="آدرس URL" name="url" type="text" class="form-control" value="<?=$slide['url']?>">
+                    <input type="submit" class="form-control" value="تغییر" name="cSlide">
+                    <input type="submit" class="form-control btn-danger" value="حذف" name="dSlide">
+                </div>
+        </form>
+            <?php
+            }
+            ?>
+
+    </div>
+    <form method="POST" action="">
+        <input style="margin: 5px;padding: 1px 15px 1px 15px" class="add_list_a w3-blue w3-btn w3-round" type="submit" name="insert" value="افزودن"/>
+    </form>
     <div class="container" style="margin-top: 10px">
         <?php
         $count=0;

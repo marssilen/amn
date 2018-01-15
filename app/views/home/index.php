@@ -1,42 +1,31 @@
 <?php
 require_once('app/views/head.php'); ?>
 <body style="background-image: url('<?=URL?>public/back.jpg') fixed">
-
 <?php require_once('app/views/menu.php'); ?>
-<!-- Header with full-height image -->
-<!--<header class="bgimg-1 w3-display-container w3-grayscale-min" id="home">-->
-<!--  <div class="w3-display-left w3-text-white" style="padding:48px">-->
-<!--    <span class="w3-jumbo w3-hide-small">--><?//=$settings['about']?><!--</span><br>-->
-<!--    <span class="w3-xxlarge w3-hide-large w3-hide-medium">--><?//=$settings['about']?><!--</span><br>-->
-<!--    <span class="w3-large">--><?//=$settings['description']?><!--</span>-->
-<!--    <p><a href="--><?//=URL?><!--page/2/درباره ی امن ایران" class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off">درباره ی ما</a></p>-->
-<!--  </div>-->
-<!--</header>-->
 <div id="wrapper">
 <div id="content">
     <div class="container">
     <div class="w3-card-2 w3-round w3-margin-top slide-contain" style="overflow: hidden">
         <div class="w3-red" style="width: 100%;overflow: hidden;position: relative;">
-
-            <img class="slides" src="<?=URL?>public/back0.jpg" style="width: 100%;position: absolute;left: 0px">
-            <img class="slides" src="<?=URL?>public/back1.jpg" style="width: 100%;position: absolute;left: 0px">
-            <img class="slides" src="<?=URL?>public/back2.jpg" style="width: 100%;position: absolute;left: 0px">
-            <img class="slides" src="<?=URL?>public/back3.jpg" style="width: 100%;position: absolute;left: 0px">
+            <?php foreach ($data['slides'] as $slide){?>
+            <a style="overflow: hidden;display: block;width: 100%;position: absolute;left: 0px" class="slides" href="<?=$slide['url']?>">
+                <img style="width: 100%" alt="امنیران" class="" src="<?=URL?>public/<?=$slide['image']?>" >
+            </a>
+            <?php } ?>
             <img src="<?=URL?>public/back.jpg" style="width: 100%;">
-            <div class="w3-display-right w3-container" style="z-index: 10"><i id="slideRight" class="fa fa-chevron-right" aria-hidden="true"></i></div>
-            <div class="w3-display-left w3-container" style="z-index: 10"><i id="slideLeft" class="fa fa-chevron-left" aria-hidden="true"></i></div>
+            <div class="w3-display-right w3-container" style="z-index: 10;cursor: pointer"><i id="slideRight" class="fa fa-chevron-right" aria-hidden="true"></i></div>
+            <div class="w3-display-left w3-container" style="z-index: 10;cursor: pointer"><i id="slideLeft" class="fa fa-chevron-left" aria-hidden="true"></i></div>
         </div>
     </div>
     </div>
 <!-- Home Section -->
-<div class="container" style="padding:128px 16px" id="Homed">
-<!--  <h3 class="w3-center">زمینه های کاری</h3>-->
+<div class="container" style="padding:12px 16px" id="Homed">
   <div class="" style="margin-top:0px">
 	<?php foreach($data['cards'] as $card){?>
     <div class="w3-col l3 m6 w3-margin-bottom" style="padding: 5px">
 	<div class="w3-card-2">
 	  <div>
-	  <img class="" src="<?= URL ?>public/upload/<?=$card['image']?>" alt="amnco" style="width: 100%">
+	  <img class="" src="<?= URL ?>public/upload/<?=$card['image']?>" alt="amnco" style="width: 100%;max-height: 150px;">
 	  </div>
 	  <div class="w3-container size" style="position: relative">
       <h3 class="w3-center"><?=$card['title']?></h3>
@@ -97,7 +86,6 @@ require_once('app/views/head.php'); ?>
 <?php
 require_once ('app/views/footer.php');
 ?>
- Add Google Maps
 <script>
     myMap();
     function myMap()

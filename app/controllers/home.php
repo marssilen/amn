@@ -7,7 +7,8 @@ class Home extends Controller
         $settings=$this->formModel->get_settings();
         $cards=$this->formModel->get_all_card();
         $div=$this->formModel->get_all_div();
-        $this->view('home/index',['settings'=>$settings,'cards'=>$cards,'div'=>$div]);
+        $slides=$this->formModel->getSlides();
+        $this->view('home/index',['slides'=>$slides,'settings'=>$settings,'cards'=>$cards,'div'=>$div]);
 //        echo '<pre>';
 //        print_r($items);
 //        echo '</pre>';
